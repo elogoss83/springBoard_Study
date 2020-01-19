@@ -2,8 +2,11 @@ package com.example.demo.dao;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
 import com.example.demo.controller.Article;
 
+@Component
 public class ArticleDao {
 
 	ArrayList<Article> articles = new ArrayList<Article>();
@@ -19,7 +22,7 @@ public class ArticleDao {
 			return articles.get(articles.size() - 1).getArticleId();
 	}
 
-	public void addArticle(String userId, String title, String body, String nick) {
+	public String addArticle(String userId, String title, String body, String nick) {
 
 		Article a = new Article();
 
@@ -30,6 +33,8 @@ public class ArticleDao {
 		a.setNick(nick);
 
 		articles.add(a);
+		
+		return "게시물이 저장되었습니다.";
 	}
 
 	public String delArticle(int articleId) {

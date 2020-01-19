@@ -2,8 +2,12 @@ package com.example.demo.dao;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
 import com.example.demo.controller.User;
 
+
+@Component
 public class UserDao {
 
 	ArrayList<User> users = new ArrayList<User>();

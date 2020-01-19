@@ -1,8 +1,8 @@
-package com.example.demo.controller; 
+package com.example.demo.controller;
 
 import java.util.ArrayList;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,7 +12,8 @@ import com.example.demo.dao.ArticleDao;
 @Controller
 public class ArticleController {
 
-	ArticleDao dao = new ArticleDao();
+	@Autowired
+	ArticleDao dao;
 
 	@RequestMapping("articleList")
 	@ResponseBody
@@ -24,8 +25,8 @@ public class ArticleController {
 	@RequestMapping("addArticle")
 	@ResponseBody
 	public String add(String userId, String title, String body, String nick) {
-		dao.addArticle(userId, title, body, nick);
-		return "게시물이 저장되었습니다.";
+
+		return dao.addArticle(userId, title, body, nick);
 	}
 
 	@RequestMapping("delArticle")
